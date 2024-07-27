@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Banner4() {
     return (
         <>
-            <section className="banner__area-four banner__bg-four" data-background="/assets/img/bg/bgvideo.png" >
+            <section className="banner__area-four banner__bg-four" data-background="/assets/img/bg/bgvideo2.jpg" >
                 <div className="container">
                     <div className="row align-items-center justify-content-center">
                         <div className="col-lg-6">

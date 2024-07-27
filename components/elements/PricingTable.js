@@ -2,13 +2,42 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
+// SDK do Mercado Pago
+import { MercadoPagoConfig } from 'mercadopago';
+// Adicione as credenciais
+const client = new MercadoPagoConfig({ accessToken: 'YOUR_ACCESS_TOKEN' });
+
+
 export default function PricingTable() {
+
+    
+const preference = new Preference(client);
+
+preference.create({
+  body: {
+    items: [
+      {
+        title: 'Meu produto',
+        quantity: 1,
+        unit_price: 25
+      }
+    ],
+  }
+})
+.then(console.log)
+.catch(console.log);
+
+
+
+
+
+
     const [isToggled, setToggled] = useState(false)
     const handleToggle = () => setToggled(!isToggled)
     return (
         <>
             <div className={isToggled ? "pricing__tab selected" : " pricing__tab"}>
-                <span className={`pricing__tab-btn monthly_tab_title  ${isToggled ? "active" : ""}`}>Monthly</span>
+                <span className={`pricing__tab-btn monthly_tab_title  ${isToggled ? "active" : ""}`}>Mensal</span>
                 <span className={`pricing__tab-switcher ${isToggled ? "active" : ""}`} onClick={handleToggle} />
                 <span className={`pricing__tab-btn annual_tab_title ${isToggled ? "active" : ""}`}>Yearly</span>
             </div>
@@ -47,7 +76,9 @@ export default function PricingTable() {
                             </ul>
                         </div>
                         <div className="pricing__btn">
-                            <Link href="#" className="btn">Get this plan Now</Link>
+                            
+<Wallet initialization={{ preferenceId: '<PREFERENCE_ID>' }} customization={{ texts:{ valueProp: 'smart_option'}}} />
+
                         </div>
                     </div>
                 </div>
